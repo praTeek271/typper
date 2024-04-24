@@ -89,35 +89,13 @@ function show_typing() {
     document.getElementById('startButton').style.display = 'block';
     document.getElementById('userInput').style.display = 'block';
 }
-// Function to start the timer for typing test
-function startTestTimer() {
-    document.getElementById('restartButton').style.display = 'block';
-    show_typing();
-    testStartTime = Date.now();
-    testTimerInterval = setInterval(updateTestTimer, 1000);
-}
-
 // Function to start the timer for typing race
 function startRaceTimer() {
-    
+
     raceStartTime = Date.now();
     raceTimerInterval = setInterval(updateRaceTimer, 1000);
 }
 
-// Function to update the timer display for typing test
-function updateTestTimer() {
-    const elapsedTime = Math.floor((Date.now() - testStartTime) / 1000);
-    const remainingTime = 30 - elapsedTime; // 30-second duration for typing test
-    const testTimerDisplay = document.getElementById('testTimer');
-    if (remainingTime >= 0) {
-        testTimerDisplay.textContent = `${remainingTime} s`;
-    } else {
-        clearInterval(testTimerInterval);
-        testTimerDisplay.textContent = 'Time\'s up!';
-        userInput.disabled = true; // Disable the textarea
-        calculateTestSpeedAndAccuracy();
-    }
-}
 
 // Function to update the timer display for typing race
 function updateRaceTimer() {
@@ -144,14 +122,6 @@ function calculateAccuracy(typedText, expectedText) {
     }
     return correctCount / expectedText.length;
 }
-
-// Typing Test Section
-const userInput = document.getElementById('userInput');
-const startButton = document.getElementById('startButton');
-
-startButton.addEventListener('click', () => {
-    startTestTimer();
-});
 
 // Typing Race Section
 const raceInput = document.getElementById('raceInput');
