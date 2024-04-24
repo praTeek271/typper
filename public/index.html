@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Practice</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
+
+    <link rel=”stylesheet” href=”https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css”>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #212529;
+            /* Dark background color */
+            color: #fff;
+            /* White text color */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #343a40;
+            /* Darker container background color */
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+            /* White shadow */
+            /* text-align: center; */
+        }
+
+        .tab {
+            overflow: hidden;
+            border-bottom: 1px solid #495057;
+            /* Dark border color */
+            background-color: #343a40;
+            /* Dark background color */
+        }
+
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            color: #fff;
+            /* White text color */
+        }
+
+        .tab button.active {
+            background-color: #495057;
+            /* Darker active tab background color */
+        }
+
+        .tabcontent {
+            display: none;
+            padding: 20px;
+            border-top: none;
+        }
+
+        .tabcontent:first-child {
+            display: block;
+        }
+
+        textarea,
+        input[type="text"] {
+            width: 80%;
+            min-height: 200px;
+            margin: 10px auto;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #495057;
+            /* Dark border color */
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: #495057;
+            /* Dark background color */
+            color: #fff;
+            /* White text color */
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            /* Default button color */
+            color: #fff;
+            /* White text color */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            /* Darker button color on hover */
+        }
+
+        .navbar {
+            background-color: #153e66;
+            padding: 1px 0 1px 5rem;
+            font-family: "Jersey 10", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .timer {
+            color: yellow;
+            font-family: "Jersey 10", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 1.6rem;
+            width: fit-content;
+            position: absolute;
+            left: 175px;
+            top: 43%;
+        }
+
+        .rst_data {
+            color: yellow;
+            font-family: cursive;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 1.6rem;
+        }
+
+        #restartButton {
+            display: none;
+            padding-top: 9px;
+            cursor: pointer;
+            border-radius: 20%;
+        }
+        #restartButton:hover {
+            background-color: #495057;
+            /* Darker button color on hover */
+        }
+
+        #startButtonContainer {
+            display: grid;
+            grid-template-columns: 7rem 30px;
+            grid-gap: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <h1>Typing Practice</h1>
+    </div>
+    <div class="container">
+        <div class="tab">
+            <button class="tablinks active" onclick="openTab(event, 'typingTest')">Typing Test</button>
+            <button class="tablinks" onclick="openTab(event, 'typingRace')">Typing Race</button>
+            <button class="tablinks" onclick="openTab(event, 'result')" style="display: none;">Result</button>
+        </div>
+
+        <div id="typingTest" class="tabcontent active" style="display: block;">
+            <div id="result_analysis" class="analysis" style="display: none;">
+                <h2>Result</h2>
+                <p id="t_spd" style="display: none;">Typing Test Speed: <span id="testSpeed" class="rst_data"></span>
+                    WPM</p>
+                <p id="t_acu" style="display: none;">Typing Test Accuracy: <span id="testAccuracy"
+                        class="rst_data"></span>%</p>
+                <p id="r_spd" style="display: none;">Typing Race Speed: <span id="raceSpeed" class="rst_data"></span>
+                    WPM</p>
+                <p id="r_acu" style="display: none;">Typing Race Accuracy: <span id="raceAccuracy"
+                        class="rst_data"></span>%</p>
+                <br>
+                <vl>________</vl><br>
+            </div>
+            <pre><code><div id="textToTypeContainer" style="display: block;padding: 2rem 0; align:left;"></div></pre></code>
+            <p class="timer" id="testTimer" style="display: block;"></p>
+            <textarea id="userInput" placeholder="Start typing here..." rows="6"></textarea>
+
+            <div id="startButtonContainer">
+                <button id="startButton" style="display: block;">Start Test</button>
+                <a id="restartButton" onclick="startTestTimer()"><img src="restart.png" style="width: 18px;"></a>
+            </div>
+        </div>
+
+        <div id="typingRace" class="tabcontent" style="display: none;">
+            <h2>Typing Race</h2>
+            <div id="result_analysis_race" class="analysis" style="display: none;">
+                <h2>Result</h2>
+                <p>Typing Test Speed: <span id="testSpeedRace"></span> WPM</p>
+                <p>Typing Test Accuracy: <span id="testAccuracyRace"></span>%</p>
+                <p>Typing Race Speed: <span id="raceSpeedRace"></span> WPM</p>
+                <p>Typing Race Accuracy: <span id="raceAccuracyRace"></span>%</p>
+                <br>
+                <vl>________</vl><br>
+            </div>
+            <p id="raceText"></p>
+            <p class="timer" id="raceTimer"></p>
+            <input type="text" id="raceInput" placeholder="Type here...">
+            <button id="raceStartButton">Start Race</button>
+            <p id="raceResult"></p>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+
+    <script src=”https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js”></script>
+
+<script>hljs.highlightAll();</script>
+</body>
+
+</html>

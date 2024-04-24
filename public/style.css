@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #212529; /* Dark background color */
+    color: #fff; /* White text color */
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #343a40; /* Darker container background color */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1); /* White shadow */
+    text-align: center;
+}
+
+.tab {
+    overflow: hidden;
+    border-bottom: 1px solid #495057; /* Dark border color */
+    background-color: #343a40; /* Dark background color */
+}
+
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    color: #fff; /* White text color */
+}
+
+.tab button.active {
+    background-color: #495057; /* Darker active tab background color */
+}
+
+.tabcontent {
+    display: none;
+    padding: 20px;
+    border-top: none;
+}
+
+.tabcontent:first-child {
+    display: block;
+}
+
+textarea,
+input[type="text"] {
+    width: 80%;
+    min-height: 200px;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #495057; /* Dark border color */
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #495057; /* Dark background color */
+    color: #fff; /* White text color */
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff; /* Default button color */
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker button color on hover */
+}
