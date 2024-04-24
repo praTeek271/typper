@@ -118,9 +118,9 @@
             font-style: normal;
             font-size: 1.6rem;
             width: fit-content;
-            position: absolute;
+            /* position: absolute;
             left: 175px;
-            top: 43%;
+            top: 43%; */
         }
 
         .rst_data {
@@ -157,8 +157,7 @@
     <div class="container">
         <div class="tab">
             <button class="tablinks active" onclick="openTab(event, 'typingTest')">Typing Test</button>
-            <button class="tablinks" onclick="openTab(event, 'typingRace')">Typing Race</button>
-            <button class="tablinks" onclick="openTab(event, 'result')" style="display: none;">Result</button>
+            <!-- <button class="tablinks" onclick="openTab(event, 'typingRace')">Typing Race</button> -->
         </div>
 
         <div id="typingTest" class="tabcontent active" style="display: block;">
@@ -176,9 +175,10 @@
                 <vl>________</vl><br>
             </div>
             <pre><code><div id="textToTypeContainer" style="display: block;padding: 2rem 0; align:left;"></div></pre></code>
+            <div class="time_text" style="display: grid; grid-template-columns:3rem auto ;grid-gap: 1rem;">
             <p class="timer" id="testTimer" style="display: block;"></p>
             <textarea id="userInput" placeholder="Start typing here..." rows="6"></textarea>
-
+        </div>
             <div id="startButtonContainer">
                 <button id="startButton" style="display: block;">Start Test</button>
                 <a id="restartButton" onclick="startTestTimer()"><img src="restart.png" style="width: 18px;"></a>

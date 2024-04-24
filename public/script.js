@@ -79,6 +79,7 @@ function show_result() {
     document.getElementById('textToTypeContainer').style.display = 'none';
     document.getElementById('testTimer').style.display = 'none';
     document.getElementById('startButton').style.display = 'none';  
+    document.getElementById('startButton').style.display = 'none';  
 }
 // Function to restart the typing
 function show_typing() {
