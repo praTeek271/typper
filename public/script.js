@@ -79,7 +79,7 @@ function show_result() {
     document.getElementById('textToTypeContainer').style.display = 'none';
     document.getElementById('testTimer').style.display = 'none';
     document.getElementById('startButton').style.display = 'none';  
-    document.getElementById('startButton').style.display = 'none';  
+    document.getElementById('userInput').style.display = 'none';
 }
 // Function to restart the typing
 function show_typing() {
@@ -87,6 +87,7 @@ function show_typing() {
     document.getElementById('textToTypeContainer').style.display = 'block';
     document.getElementById('testTimer').style.display = 'block';
     document.getElementById('startButton').style.display = 'block';
+    document.getElementById('userInput').style.display = 'block';
 }
 // Function to start the timer for typing test
 function startTestTimer() {
@@ -98,6 +99,7 @@ function startTestTimer() {
 
 // Function to start the timer for typing race
 function startRaceTimer() {
+    
     raceStartTime = Date.now();
     raceTimerInterval = setInterval(updateRaceTimer, 1000);
 }
